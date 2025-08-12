@@ -56,27 +56,15 @@ JWT 기반 사용자 인증과 userId 매핑을 통해 재연결 시 이전 세�
 
 ### 🛡️ **백**
 
-결제 플로우는 외부 Toss 결제 서비스와 내부 MySQL 저장이라는 두 개의 분리된 트랜잭션으로 구성되기 때문에, 외부 결제는 정상 커밋됐지만 내부 DB 트랜잭션이 롤백되면 원자성이 깨지고 데이터 불일치가 발생할 수 있었습니다.
 
-이를 해결하기 위해 Saga 패턴 기반의 보상 트랜잭션(compensation transaction) 구조를 도입했습니다. 내부 DB 저장이 실패하면 곧바로 Toss Cancel API를 호출해 외부 결제를 취소하며, 요청 ID를 활용해 멱등성을 보장합니다.
-
-재시도 상태와 회차는 Redis에 기록하고 최대 3회까지 자동 재시도하며, 이후에는 DLQ(Dead Letter Queue)로 이관해 운영자가 수동으로 환불하도록 설계해 안정성과 운영 효율을 모두 확보했습니다.
-
-[Wiki로 자세히 보기](https://github.com/today-is-first/oneul/wiki/%EC%84%A4%EB%AF%BC%EC%9D%98-%EA%B3%A0%EB%AF%BC%EA%B3%BC-%ED%95%B4%EA%B2%B0)
+[Wiki로 자세히 보기]()
 
 <br />
 
 ### 🚀 프론트
-서비스 확장과 사용자 경험 개선을 위해 세 가지 기술을 적용해 고도화를 진행했습니다.
 
-1. 인피니티 스크롤을 도입해 최초 30개 데이터만 로딩하고, 이후 스크롤 시 과거 데이터를 순차적으로 불러오도록 개선했습니다. 이 방식으로 초기 로딩 시간을 약 15% 가량 줄였고, 렌더링 성능도 안정화되었습니다.
 
-2. React Query 캐싱을 통해 동일 요청 반복을 방지했습니다. Stale Time과 캐시 전략 설정으로 API 호출 수를 약 35% 감소시켜 서버 부하를 효과적으로 줄였습니다.
-
-3. 입력창과 스크롤 이벤트처럼 반복 호출이 잦은 구간에 Debounce와 Throttle을 적용했습니다.
-   그 결과 의도치 않은 중복 요청을 막을 수 있었고, 사용자 인터랙션의 일관성과 서버 안정성을 동시에 확보할 수 있었습니다.
-
-[Wiki로 자세히 보기](https://github.com/today-is-first/oneul/wiki/%EC%B0%AC%EC%9D%98-%EA%B3%A0%EB%AF%BC%EA%B3%BC-%ED%95%B4%EA%B2%B0#%EC%B0%AC%EC%9D%98-%EA%B3%A0%EB%AF%BC%EA%B3%BC-%ED%95%B4%EA%B2%B0)
+[Wiki로 자세히 보기]()
 
 <br/>
 <br/>
@@ -90,7 +78,7 @@ JWT 기반 사용자 인증과 userId 매핑을 통해 재연결 시 이전 세�
 **WebSocket 기반 실시간 통신**으로 면접 상태가 실시간으로 동기화되며,  
 **면접관/면접자 역할을 자유롭게 바꿔가며** 연습할 수 있어요.
 
-<img src="https://github.com/user-attachments/assets/94e09687-cfa2-4914-9742-0b6d472b9814" width="700" alt="면접 세션 관리" />
+<img src="" width="700" alt="면접 세션 관리" />
 
 <br/>
 <br/>
@@ -103,7 +91,7 @@ JWT 기반 사용자 인증과 userId 매핑을 통해 재연결 시 이전 세�
 **STT(Speech-to-Text) 기술**로 음성 답변을 텍스트로 변환하고,  
 이를 바탕으로 **개인화된 후속 질문**을 제공해요.
 
-<img src="https://github.com/user-attachments/assets/7090104a-25a5-4c2a-8081-a1e445ce6988" width="700" alt="AI 꼬리질문" />
+<img src="" width="700" alt="AI 꼬리질문" />
 
 <br/>
 <br/>
@@ -115,7 +103,7 @@ JWT 기반 사용자 인증과 userId 매핑을 통해 재연결 시 이전 세�
 **실시간 음성/영상 스트리밍**으로 실제 면접과 동일한 환경을 제공합니다.  
 **화면 공유와 음성 제어** 기능으로 다양한 면접 상황을 연출할 수 있어요.
 
-<img src="https://github.com/user-attachments/assets/b2049261-6ced-4be9-82ef-6c1eee523804" width="700" alt="WebRTC 화상면접" />
+<img src="" width="700" alt="WebRTC 화상면접" />
 
 <br/>
 <br/>
@@ -128,7 +116,7 @@ JWT 기반 사용자 인증과 userId 매핑을 통해 재연결 시 이전 세�
 **방별 채팅방 관리**와 **메시지 브로드캐스팅**으로  
 원활한 커뮤니케이션을 지원해요.
 
-<img src="https://github.com/user-attachments/assets/0a298cd3-cefe-4032-9cdc-21a6ccc7405a" width="700" alt="실시간 채팅" />
+<img src="" width="700" alt="실시간 채팅" />
 
 <br/>
 <br/>
@@ -141,7 +129,7 @@ JWT 기반 사용자 인증과 userId 매핑을 통해 재연결 시 이전 세�
 **질문별 답변 시간, STT 정확도, 면접 횟수** 등  
 다양한 지표로 **면접 실력 향상도를 추적**할 수 있어요.
 
-<img src="https://github.com/user-attachments/assets/51a9d143-a0a7-49c0-ba44-060dda54f7d1" width="700" alt="면접 결과 분석" />
+<img src="" width="700" alt="면접 결과 분석" />
 
 <br/>
 <br/>
