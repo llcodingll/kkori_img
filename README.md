@@ -1,6 +1,4 @@
-[![hits](https://myhits.vercel.app/api/hit/https%3A%2F%2Fgithub.com%2Ftoday-is-first%2Foneul?color=purple&label=hits&size=small)](https://myhits.vercel.app)
-
-## 🗂️ 팀 문서 & 자료 링크
+ ## 🗂️ 팀 문서 & 자료 링크
 
 <p align="center">
   <a href="https://www.notion.so/229656e282d88069a69fe9a18ca1cc58?v=229656e282d88040a866000cc977e780">📒 팀 노션</a> &nbsp;|&nbsp;
